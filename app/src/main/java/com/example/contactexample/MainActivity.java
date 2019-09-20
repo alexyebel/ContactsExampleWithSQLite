@@ -1,18 +1,18 @@
 package com.example.contactexample;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.os.Build;
-import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+        import android.Manifest;
+        import android.content.pm.PackageManager;
+        import android.database.Cursor;
+        import android.os.Build;
+        import android.os.Bundle;
+        import android.provider.ContactsContract;
+        import android.widget.AdapterView;
+        import android.widget.ArrayAdapter;
+        import android.widget.ListView;
+        import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     final int CONTACTS_REQUEST_CODE=1;
@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
             if(hasContactsPermission== PackageManager.PERMISSION_DENIED){
                 requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},CONTACTS_REQUEST_CODE);
             }
-        else readContacts();
+            else readContacts();
         }
-       else readContacts();
+        else readContacts();
     }
 
     @Override
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             String contact=cursor.getString(nameIndex)+" "+ cursor.getString(phoneIndex);
             adapter.add(contact);
         }
-       adapter.notifyDataSetChanged();
+         cursor.close();
+        adapter.notifyDataSetChanged();
     }
 }
